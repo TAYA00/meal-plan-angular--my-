@@ -18,24 +18,25 @@
       </thead>
       <tbody>
         <tr *ngFor="let row of rows">
-          <td class = "aktion"><strong class="action-text">{{ row?.Name }}</strong></td>
+          <td class="aktion"><strong class="action-text">{{ row?.Name }}</strong></td>
 
-          <td *ngFor="let day of daysOfWeek"></td>
-            <div *ngFor="let productObj of getProducts(day.index, row> 0; else emptyCell)"></div>
-            <div *ngFor="let productObj of getProducts(day.index, row)"></div>
-              <div *ngIf="data?.Products?.[productObj?.ProductId] as product">
-                <strong>{{ product?.Name || 'Unbekanntes Produkt' }}</strong><br>
-                <small class="allergens"  *ngIf="product?.AllergenIds?.length">
-                  {{ getAllergenNames(product) }}
-                </small><br>
-                <strong>{{ product?.Price?.Betrag ? (product.Price.Betrag + ' €') : 'Preis nicht verfügbar' }}</strong>
-              </div>
+          <td *ngFor="let day of weekdays">
+            <div *ngFor="let productObj of getProducts(day, row)">
+              <strong>productObj</strong>
             </div>
-          </ng-container>
-          <ng-template #emptyCell></ng-template>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+            <div *ngIf="data?.Products?.[productObj?.ProductId] as product">
+              <strong>{{ product?.Name || 'Unbekanntes Produkt' }}</strong><br>
+              <small class="allergens" *ngIf="product?.AllergenIds?.length">
+                {{ getAllergenNames(product) }}
+              </small><br>
+              <strong>{{ product?.Price?.Betrag ? (product.Price.Betrag + ' €') : 'Preis nicht verfügbar' }}</strong>
+            </div>
   </div>
+  </td>
+  </ng-container>
+  <ng-template #emptyCell></ng-template>
+  </td>
+  </tr>
+  </tbody>
+  </table>
 </div>
