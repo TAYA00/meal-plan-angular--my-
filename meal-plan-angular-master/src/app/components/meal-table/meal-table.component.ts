@@ -20,6 +20,17 @@ interface Product {
   Price: { Betrag: number };
 }
 
+interface Row { 
+  Name: string; 
+  Days: { Weekday: number; ProductIds: { ProductId: number }[] }[] 
+}
+
+interface Day {
+  Weekday: number; 
+  ProductIds: { ProductId: number }[] ;
+}
+
+
 //Загальна структура отриманих з API даних
 interface MealData {
   Allergens: { [key: string]: Allergen }; //Allergens – об'єкт, де ключем є ідентифікатор алергену, а значенням – його опис.
@@ -52,6 +63,8 @@ export class MealTableComponent implements OnInit {
   daysOfWeek: { name: string; date: string }[] = [];
   weekNumber!: number; // 🔹 Variable für KW
 
+  weekdays = [0, 1, 2, 3, 4, 5, 6,];
+
   //КОНСТРУКТОР недрює HttpClient для виконання HTTP-запитів
   constructor(private http: HttpClient) { }
 
@@ -61,7 +74,7 @@ export class MealTableComponent implements OnInit {
         console.log('Erhaltene Daten:', response);
         if (response) {
           this.data = response as MealData;
-          this.rows =  this.processMeals(this.data.Rows ?? []);
+          this.rows = this.processMeals(this.data.Rows ?? []);
 
         }
         this.generateWeekDates();
@@ -85,33 +98,33 @@ export class MealTableComponent implements OnInit {
   private processMeals(rows: any[]): any[] {
     return rows.map(row => {
       // Фільтруємо всі дні, крім середи (2)
-      let updatedDays = row.Days.filter((day: { Weekday: number}) => day.Weekday !== 2);
+      let updatedDays = row.Days.filter((day: { Weekday: number }) => day.Weekday !== 2);
 
-        //; ProductIds: { ProductId: number }[] }) => day.Weekday !== 2);
+      //; ProductIds: { ProductId: number }[] }) => day.Weekday !== 2);
 
       // Отримуємо всі продукти з середи
-      const wednesdayData = row.Days.find((day: { Weekday: number}) => day.Weekday === 2);
+      const wednesdayData = row.Days.find((day: { Weekday: number }) => day.Weekday === 2);
       if (wednesdayData && wednesdayData.ProductIds?.length > 0) {
         const productsToDistribute = [...wednesdayData.ProductIds]; // Копіюємо список страв
 
-          // Якщо немає інших днів, розподіляємо рівномірно між доступними
-          if (updatedDays.length === 0) {
-            updatedDays = [
-              { Weekday: 0, ProductIds: [] },
-              { Weekday: 1, ProductIds: [] },
-              { Weekday: 3, ProductIds: [] },
-              { Weekday: 4, ProductIds: [] },
-              { Weekday: 5, ProductIds: [] },
-              { Weekday: 6, ProductIds: [] }
-            ];
-          }
+        // Якщо немає інших днів, розподіляємо рівномірно між доступними
+        if (updatedDays.length === 0) {
+          updatedDays = [
+            { Weekday: 0, ProductIds: [] },
+            { Weekday: 1, ProductIds: [] },
+            { Weekday: 3, ProductIds: [] },
+            { Weekday: 4, ProductIds: [] },
+            { Weekday: 5, ProductIds: [] },
+            { Weekday: 6, ProductIds: [] }
+          ];
+        }
 
-          // Розподіляємо продукти з середи по інших доступних днях
-      productsToDistribute.forEach((product, index) => {
-        const targetDay = updatedDays[index % updatedDays.length]; // Вибираємо день по круговому алгоритму
-        targetDay.ProductIds.push(product);
-      });
-    }
+        // Розподіляємо продукти з середи по інших доступних днях
+        productsToDistribute.forEach((product, index) => {
+          const targetDay = updatedDays[index % updatedDays.length]; // Вибираємо день по круговому алгоритму
+          targetDay.ProductIds.push(product);
+        });
+      }
 
       return { ...row, Days: updatedDays };
     });
@@ -142,15 +155,19 @@ export class MealTableComponent implements OnInit {
     }
     return Math.ceil((firstThursday - tempDate.getTime()) / 604800000) + 1;
   }
+
+  getProducts(weekday: number, row: Row) {
+    return `${weekday} - ${row.Name}`
+  }
+
+  getAllergenNames(product: Product): string {
+    if (!product.AllergenIds || product.AllergenIds.length === 0 || !this.data?.Allergens) {
+      return 'Keine Allergene';
+    }
+    return product.AllergenIds
+      .map(aid => this.data.Allergens[aid]?.Label || 'Unbekanntes Allergen')
+      .join(', ');
+  }
+
 }
 
-
-
-// getAllergenNames(product: Product): string {
-//   if (!product.AllergenIds || product.AllergenIds.length === 0 || !this.data?.Allergens) {
-//     return 'Keine Allergene';
-//   }
-//   return product.AllergenIds
-//     .map(aid => this.data.Allergens[aid]?.Label || 'Unbekanntes Allergen')
-//     .join(', ');
-// }

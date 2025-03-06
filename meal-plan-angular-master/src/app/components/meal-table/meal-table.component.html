@@ -17,6 +17,10 @@
       <tbody>
         <tr *ngFor="let row of rows">
           <td class = "aktion"><strong class="action-text">{{ row?.Name }}</strong></td>
+          <td *ngFor="let weekday of weekdays">
+            <span>{{weekday}}</span>
+            {{ getProducts(weekday, row) }}
+          </td>
           <td *ngFor="let day of row?.Days">
             <div *ngFor="let productObj of day?.ProductIds">
               <div *ngIf="data?.Products?.[productObj?.ProductId] as product">
