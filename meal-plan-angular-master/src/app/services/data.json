@@ -1,0 +1,715 @@
+{
+  "Allergens": {
+      "0_": {
+          "Id": "0_",
+          "Label": "Gluten"
+      },
+      "0_0": {
+          "Id": "0_0",
+          "Label": ""
+      },
+      "2_": {
+          "Id": "2_",
+          "Label": "I"
+      },
+      "3_": {
+          "Id": "3_",
+          "Label": "B"
+      },
+      "4_": {
+          "Id": "4_",
+          "Label": "H"
+      },
+      "5_": {
+          "Id": "5_",
+          "Label": "L"
+      },
+      "6_": {
+          "Id": "6_",
+          "Label": "F"
+      },
+      "9_": {
+          "Id": "9_",
+          "Label": "K"
+      },
+      "0_1": {
+          "Id": "0_1",
+          "Label": "Roggen und Roggenerzeugnisse"
+      },
+      "0_2": {
+          "Id": "0_2",
+          "Label": "Gerste und Gersteerzeugnisse"
+      },
+      "0_3": {
+          "Id": "0_3",
+          "Label": "Hafer- und Hafererzeugnisse"
+      },
+      "7_": {
+          "Id": "7_",
+          "Label": "Schalenfrüchte und Schalenfruchterzeugnisse"
+      },
+      "7_0": {
+          "Id": "7_0",
+          "Label": "Mandeln und Mandelerzeugnisse"
+      },
+      "7_1": {
+          "Id": "7_1",
+          "Label": "Haselnüsse und Haselnusserzeugnisse"
+      },
+      "7_2": {
+          "Id": "7_2",
+          "Label": "Walnüsse und Walnusserzeugniss"
+      },
+      "7_3": {
+          "Id": "7_3",
+          "Label": "Kaschunüsse und Kaschunusserzeugnisse"
+      },
+      "7_4": {
+          "Id": "7_4",
+          "Label": "Pecanüsse und Pecanusserzeugnisse"
+      },
+      "7_5": {
+          "Id": "7_5",
+          "Label": "Paranüsse und Paranusserzeugnisse"
+      },
+      "7_6": {
+          "Id": "7_6",
+          "Label": "Pistazien und Pistazienerzeugnisse"
+      },
+      "7_7": {
+          "Id": "7_7",
+          "Label": "Macadamia- oder Queenslandnüsse und daraus gewonnene Erzeugnisse"
+      },
+      "1_": {
+          "Id": "1_",
+          "Label": "Krebstiere und Krebstiererzeugnisse"
+      },
+      "8_": {
+          "Id": "8_",
+          "Label": "Sellerie und Sellerieerzeugnisse"
+      },
+      "10_": {
+          "Id": "10_",
+          "Label": "Sesam und Sesamerzeugnisse"
+      },
+      "11_": {
+          "Id": "11_",
+          "Label": "Schwefeldioxid und Sulfite"
+      },
+      "12_": {
+          "Id": "12_",
+          "Label": "Lupinen und Lupinenerzeugnisse"
+      },
+      "13_": {
+          "Id": "13_",
+          "Label": "Weichtiere und Weichtiererzeugnisse"
+      }
+  },
+  "Products": {
+      "190414": {
+          "AllergenIds": [
+              "6_",
+              "0_"
+          ],
+          "ProductId": 190414,
+          "Name": "BROTZEIT Hähnchenbrust im Knuspermantel Pommes frites",
+          "Price": {
+              "Betrag": 3.9
+          }
+      },
+      "190419": {
+          "AllergenIds": [
+              "6_",
+              "0_",
+              "4_",
+              "5_",
+              "12_"
+          ],
+          "ProductId": 190419,
+          "Name": "BROTZEIT Toast \"Hawaii\"",
+          "Price": {
+              "Betrag": 2.4
+          }
+      },
+      "190446": {
+          "AllergenIds": [
+              "6_",
+              "0_",
+              "4_",
+              "5_",
+              "12_",
+              "7_",
+              "13_"
+          ],
+          "ProductId": 190446,
+          "Name": "Powerkerne Hirtenkäse, eingelegt Eingelegte Oliven Getrocknete Tomaten Croûtons",
+          "Price": {
+              "Betrag": 3.0
+          }
+      },
+      "190453": {
+          "AllergenIds": [
+              "6_",
+              "0_",
+              "12_"
+          ],
+          "ProductId": 190453,
+          "Name": "Goudastifte Artischocken Tomaten-Paprika-Croûtons Gekochte Eier Gekochter Hinterschinken",
+          "Price": {
+              "Betrag": 0.0
+          }
+      },
+      "190454": {
+          "AllergenIds": [
+              "6_",
+              "0_",
+              "4_",
+              "5_",
+              "12_"
+          ],
+          "ProductId": 190454,
+          "Name": "Flädlesuppe",
+          "Price": {
+              "Betrag": 0.6
+          }
+      },
+      "190464": {
+          "AllergenIds": [
+              "3_",
+              "6_",
+              "0_2",
+              "0_",
+              "4_",
+              "0_3",
+              "7_1",
+              "2_",
+              "9_",
+              "7_3",
+              "1_",
+              "5_",
+              "12_",
+              "7_7",
+              "7_0",
+              "7_5",
+              "7_4",
+              "7_6",
+              "0_1",
+              "7_",
+              "11_",
+              "8_",
+              "10_",
+              "7_2",
+              "13_",
+              "0_0"
+          ],
+          "ProductId": 190464,
+          "Name": "Gemüsecremesuppe",
+          "Price": {
+              "Betrag": 0.66
+          }
+      },
+      "190483": {
+          "AllergenIds": [
+              "6_"
+          ],
+          "ProductId": 190483,
+          "Name": "Knusprige Kartoffeltaschen | Tomaten-Mozzarellafüllung | Schnittlauchsauce",
+          "Price": {
+              "Betrag": 2.25
+          }
+      },
+      "190491": {
+          "AllergenIds": [
+              "6_"
+          ],
+          "ProductId": 190491,
+          "Name": "Kirsch-Quark | Zimt - Zucker",
+          "Price": {
+              "Betrag": 0.8
+          }
+      },
+      "190495": {
+          "AllergenIds": [
+              "0_",
+              "2_",
+              "0_0"
+          ],
+          "ProductId": 190495,
+          "Name": "Linsenbratling | pikante Mango Chutney",
+          "Price": {
+              "Betrag": 99.98
+          }
+      },
+      "190502": {
+          "AllergenIds": [
+              "6_",
+              "0_",
+              "2_",
+              "9_",
+              "0_1",
+              "8_",
+              "0_0"
+          ],
+          "ProductId": 190502,
+          "Name": "Mediterrane Fleischpflanzerl | Feta | Oliven | getrocknete Tomaten | Rosmarinjus",
+          "Price": {
+              "Betrag": 99.98
+          }
+      },
+      "190505": {
+          "AllergenIds": [
+              "0_",
+              "0_0"
+          ],
+          "ProductId": 190505,
+          "Name": "Gemüsewok | Yakitorispieße | Sprossen | Basmatireis",
+          "Price": {
+              "Betrag": 4.25
+          }
+      },
+      "190509": {
+          "AllergenIds": [
+              "6_",
+              "7_0",
+              "7_"
+          ],
+          "ProductId": 190509,
+          "Name": "Marzipanpudding | Mandeln",
+          "Price": {
+              "Betrag": 0.8
+          }
+      },
+      "190511": {
+          "AllergenIds": [],
+          "ProductId": 190511,
+          "Name": "Grillhendl",
+          "Price": {
+              "Betrag": 2.95
+          }
+      },
+      "190513": {
+          "AllergenIds": [
+              "6_",
+              "0_",
+              "0_0"
+          ],
+          "ProductId": 190513,
+          "Name": "Couscouspfanne | Kicherbsen | orientalischen Gemüse| Kefir",
+          "Price": {
+              "Betrag": 2.95
+          }
+      },
+      "190521": {
+          "AllergenIds": [
+              "6_",
+              "11_"
+          ],
+          "ProductId": 190521,
+          "Name": "Asia Limonenblatt Panna Cotta | Schoko-Chilisauce",
+          "Price": {
+              "Betrag": 0.8
+          }
+      },
+      "190524": {
+          "AllergenIds": [
+              "3_",
+              "0_",
+              "2_",
+              "11_",
+              "0_0"
+          ],
+          "ProductId": 190524,
+          "Name": "Fischfilet in Backteig | süß-saure Sauce",
+          "Price": {
+              "Betrag": 4.25
+          }
+      },
+      "190529": {
+          "AllergenIds": [
+              "0_2",
+              "0_",
+              "9_",
+              "8_"
+          ],
+          "ProductId": 190529,
+          "Name": "Asiagemüse",
+          "Price": {
+              "Betrag": 0.85
+          }
+      },
+      "190530": {
+          "AllergenIds": [
+              "6_",
+              "11_"
+          ],
+          "ProductId": 190530,
+          "Name": "Bayrisch Creme | Waldbeeren",
+          "Price": {
+              "Betrag": 0.8
+          }
+      },
+      "190988": {
+          "AllergenIds": [
+              "6_"
+          ],
+          "ProductId": 190988,
+          "Name": "Currywurst-Gulasch mit Backkartoffeln",
+          "Price": {
+              "Betrag": 0.0
+          }
+      },
+      "190989": {
+          "AllergenIds": [
+              "6_",
+              "11_"
+          ],
+          "ProductId": 190989,
+          "Name": "Hühner-Tajine mit Erbsen und Reis",
+          "Price": {
+              "Betrag": 0.0
+          }
+      },
+      "190994": {
+          "AllergenIds": [
+              "4_",
+              "5_",
+              "11_",
+              "13_"
+          ],
+          "ProductId": 190994,
+          "Name": "Zitronen-Mousse",
+          "Price": {
+              "Betrag": 0.0
+          }
+      },
+      "190995": {
+          "AllergenIds": [
+              "6_",
+              "0_",
+              "4_",
+              "5_",
+              "11_",
+              "13_"
+          ],
+          "ProductId": 190995,
+          "Name": "Kaiserschmarrn mit Zimt-Zucker und Apfelmus",
+          "Price": {
+              "Betrag": 0.0
+          }
+      },
+      "190998": {
+          "AllergenIds": [
+              "6_",
+              "4_",
+              "5_",
+              "11_"
+          ],
+          "ProductId": 190998,
+          "Name": "Saftige Hähnchenbrust auf gebratenem Spargel mit Leinsamen und Duftreis",
+          "Price": {
+              "Betrag": 0.0
+          }
+      },
+      "190999": {
+          "AllergenIds": [
+              "11_"
+          ],
+          "ProductId": 190999,
+          "Name": "Currywurst mit Pommes",
+          "Price": {
+              "Betrag": 0.0
+          }
+      },
+      "191004": {
+          "AllergenIds": [
+              "6_",
+              "4_",
+              "5_",
+              "11_"
+          ],
+          "ProductId": 191004,
+          "Name": "hausgemachtes Tiramisu Himbeer-Schicht-Dessert",
+          "Price": {
+              "Betrag": 0.0
+          }
+      },
+      "191007": {
+          "AllergenIds": [],
+          "ProductId": 191007,
+          "Name": "Schweinebraten mit Dunkelbiersoße und Kartoffelknödel",
+          "Price": {
+              "Betrag": 0.0
+          }
+      },
+      "191008": {
+          "AllergenIds": [
+              "6_",
+              "4_",
+              "5_",
+              "11_",
+              "8_",
+              "10_"
+          ],
+          "ProductId": 191008,
+          "Name": "\"Tagliatelle con Salmone\" Pasta mit Lachs in Hummersoße und Rucola",
+          "Price": {
+              "Betrag": 0.0
+          }
+      },
+      "191013": {
+          "AllergenIds": [
+              "6_",
+              "4_",
+              "9_",
+              "5_",
+              "11_"
+          ],
+          "ProductId": 191013,
+          "Name": "Schokolade Schmankerlcreme",
+          "Price": {
+              "Betrag": 0.0
+          }
+      },
+      "191016": {
+          "AllergenIds": [
+              "6_",
+              "4_",
+              "5_",
+              "11_"
+          ],
+          "ProductId": 191016,
+          "Name": "Schwäbische Schmankerl Medaillons von Schwein und Pute auf Champignon-Rahmsoße dazu Spätzle",
+          "Price": {
+              "Betrag": 0.0
+          }
+      },
+      "191022": {
+          "AllergenIds": [
+              "4_",
+              "5_",
+              "11_",
+              "13_"
+          ],
+          "ProductId": 191022,
+          "Name": "Mamorieter Himbeerschaum",
+          "Price": {
+              "Betrag": 0.0
+          }
+      },
+      "191025": {
+          "AllergenIds": [
+              "6_",
+              "4_",
+              "5_",
+              "11_",
+              "8_",
+              "13_"
+          ],
+          "ProductId": 191025,
+          "Name": "Gebackene Meerbarbe mit Sauce Remoulade und Petersilienkartoffeln",
+          "Price": {
+              "Betrag": 0.0
+          }
+      }
+  },
+  "Rows": [
+      {
+          "Name": "Vorspeise",
+          "Days": [
+              {
+                  "Weekday": 0,
+                  "ProductIds": [
+                      {
+                          "ProductId": 190464
+                      },
+                      {
+                          "ProductId": 190529
+                      }
+                  ]
+              },
+              {
+                  "Weekday": 1,
+                  "ProductIds": [
+                      {
+                          "ProductId": 190454
+                      }
+                  ]
+              },
+              {
+                  "Weekday": 3,
+                  "ProductIds": [
+                      {
+                          "ProductId": 190419
+                      }
+                  ]
+              },
+              {
+                  "Weekday": 4,
+                  "ProductIds": [
+                      {
+                          "ProductId": 190414
+                      }
+                  ]
+              },
+              {
+                  "Weekday": 5,
+                  "ProductIds": [
+                      {
+                          "ProductId": 190453
+                      }
+                  ]
+              },
+              {
+                  "Weekday": 6,
+                  "ProductIds": [
+                      {
+                          "ProductId": 190446
+                      }
+                  ]
+              }
+          ]
+      },
+      {
+          "Name": "Hauptgericht",
+          "Days": [
+              {
+                  "Weekday": 0,
+                  "ProductIds": [
+                      {
+                          "ProductId": 191008
+                      },
+                      {
+                          "ProductId": 190999
+                      }
+                  ]
+              },
+              {
+                  "Weekday": 1,
+                  "ProductIds": [
+                      {
+                          "ProductId": 190989
+                      }
+                  ]
+              },
+              {
+                  "Weekday": 3,
+                  "ProductIds": [
+                      {
+                          "ProductId": 190524
+                      },
+                      {
+                          "ProductId": 190513
+                      },
+                      {
+                          "ProductId": 190505
+                      }
+                  ]
+              },
+              {
+                  "Weekday": 4,
+                  "ProductIds": [
+                      {
+                          "ProductId": 190502
+                      },
+                      {
+                          "ProductId": 190495
+                      },
+                      {
+                          "ProductId": 190483
+                      },
+                      {
+                          "ProductId": 190511
+                      }
+                  ]
+              },
+              {
+                  "Weekday": 5,
+                  "ProductIds": [
+                      {
+                          "ProductId": 191007
+                      },
+                      {
+                          "ProductId": 191016
+                      }
+                  ]
+              },
+              {
+                  "Weekday": 6,
+                  "ProductIds": [
+                      {
+                          "ProductId": 190998
+                      },
+                      {
+                          "ProductId": 191025
+                      },
+                      {
+                          "ProductId": 190988
+                      }
+                  ]
+              }
+          ]
+      },
+      {
+          "Name": "Nachspeise",
+          "Days": [
+              {
+                  "Weekday": 0,
+                  "ProductIds": [
+                      {
+                          "ProductId": 190509
+                      }
+                  ]
+              },
+              {
+                  "Weekday": 1,
+                  "ProductIds": [
+                      {
+                          "ProductId": 190491
+                      }
+                  ]
+              },
+              {
+                  "Weekday": 3,
+                  "ProductIds": [
+                      {
+                          "ProductId": 190530
+                      }
+                  ]
+              },
+              {
+                  "Weekday": 4,
+                  "ProductIds": [
+                      {
+                          "ProductId": 190521
+                      }
+                  ]
+              },
+              {
+                  "Weekday": 5,
+                  "ProductIds": [
+                      {
+                          "ProductId": 190995
+                      },
+                      {
+                          "ProductId": 191004
+                      }
+                  ]
+              },
+              {
+                  "Weekday": 6,
+                  "ProductIds": [
+                      {
+                          "ProductId": 191022
+                      },
+                      {
+                          "ProductId": 191013
+                      },
+                      {
+                          "ProductId": 190994
+                      }
+                  ]
+              }
+          ]
+      }
+  ]
+}
