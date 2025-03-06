@@ -19,23 +19,26 @@ interface Product {
   AllergenIds?: string[];
   Price: { Betrag: number };
 }
-
-interface Row { 
-  Name: string; 
-  Days: { Weekday: number; ProductIds: { ProductId: number }[] }[] 
-}
-
 interface Day {
-  Weekday: number; 
-  ProductIds: { ProductId: number }[] ;
+  Weekday: number;
+  ProductIds: { ProductId: number }[];
 }
+
+interface Row {
+  Name: string;
+  Days: Day[];
+}
+
 
 
 //Загальна структура отриманих з API даних
 interface MealData {
   Allergens: { [key: string]: Allergen }; //Allergens – об'єкт, де ключем є ідентифікатор алергену, а значенням – його опис.
   Products: { [key: string]: Product }; //Products – об'єкт, де ключ – ProductId, а значення – інформація про продукт.
-  Rows: { Name: string; Days: { Weekday: number; ProductIds: { ProductId: number }[] }[] }[];
+  // Rows: { Name: string; Days: { Weekday: number; ProductIds: { ProductId: number }[] }[] }[];
+  Rows: Row[];
+
+
   //Rows – масив об'єктів (ряди), де кожен містить
   // Name – назву страви.
   // Days – масив днів, коли страву подають.
@@ -56,13 +59,12 @@ interface MealData {
 
 export class MealTableComponent implements OnInit {
   data!: MealData;
-  rows: any[] = [];
+  rows: Row[] = [];
   isLoading = true;
   errorMessage = '';
   private apiUrl = 'https://mypreLive.qnips.com/dbapi/ha';
-  daysOfWeek: { name: string; date: string }[] = [];
+  daysOfWeek: { name: string; date: string; index: number }[] = [];
   weekNumber!: number; // 🔹 Variable für KW
-
   weekdays = [0, 1, 2, 3, 4, 5, 6,];
 
   //КОНСТРУКТОР недрює HttpClient для виконання HTTP-запитів
@@ -77,10 +79,13 @@ export class MealTableComponent implements OnInit {
           this.rows = this.processMeals(this.data.Rows ?? []);
 
         }
+
         this.generateWeekDates();
-        this.weekNumber = this.getISOWeek(new Date()); // 🔹 Abfrage der aktuellen Wochennummer
+        this.weekNumber = this.getISOWeek(new Date());
         this.isLoading = false;
       },
+
+
       error: (error) => {
         console.error(`Fehler beim Laden: ${error.message}`);
         this.errorMessage = 'Hochladen von Daten nicht möglich';
@@ -93,38 +98,13 @@ export class MealTableComponent implements OnInit {
     return this.http.get<MealData>(this.apiUrl);
   }
 
-  //Перерозподіляє страви з середи (Weekday 2) на інші дні тижня.
 
-  private processMeals(rows: any[]): any[] {
+  private processMeals(rows: Row[]): Row[] {
     return rows.map(row => {
-      // Фільтруємо всі дні, крім середи (2)
-      let updatedDays = row.Days.filter((day: { Weekday: number }) => day.Weekday !== 2);
-
-      //; ProductIds: { ProductId: number }[] }) => day.Weekday !== 2);
-
-      // Отримуємо всі продукти з середи
-      const wednesdayData = row.Days.find((day: { Weekday: number }) => day.Weekday === 2);
-      if (wednesdayData && wednesdayData.ProductIds?.length > 0) {
-        const productsToDistribute = [...wednesdayData.ProductIds]; // Копіюємо список страв
-
-        // Якщо немає інших днів, розподіляємо рівномірно між доступними
-        if (updatedDays.length === 0) {
-          updatedDays = [
-            { Weekday: 0, ProductIds: [] },
-            { Weekday: 1, ProductIds: [] },
-            { Weekday: 3, ProductIds: [] },
-            { Weekday: 4, ProductIds: [] },
-            { Weekday: 5, ProductIds: [] },
-            { Weekday: 6, ProductIds: [] }
-          ];
-        }
-
-        // Розподіляємо продукти з середи по інших доступних днях
-        productsToDistribute.forEach((product, index) => {
-          const targetDay = updatedDays[index % updatedDays.length]; // Вибираємо день по круговому алгоритму
-          targetDay.ProductIds.push(product);
-        });
-      }
+      const updatedDays = this.weekdays.map(weekday => {
+        const dayData = row.Days.find(d => d.Weekday === weekday);
+        return dayData ? dayData : { Weekday: weekday, ProductIds: [] };
+      });
 
       return { ...row, Days: updatedDays };
     });
@@ -140,7 +120,7 @@ export class MealTableComponent implements OnInit {
     this.daysOfWeek = days.map((day, index) => {
       const date = new Date(monday);
       date.setDate(monday.getDate() + index);
-      return { name: day, date: date.toLocaleDateString('uk-DE') };
+      return { name: day, date: date.toLocaleDateString('uk-DE'), index };
     });
   }
 
@@ -171,3 +151,65 @@ export class MealTableComponent implements OnInit {
 
 }
 
+
+
+// private processMeals(rows: any[]): any[] {
+//   return rows.map(row => {
+//     // Фільтруємо всі дні, крім середи (2)
+//     let updatedDays = row.Days.filter((day: { Weekday: number }) => day.Weekday !== 2);
+
+//     //; ProductIds: { ProductId: number }[] }) => day.Weekday !== 2);
+
+//     // Отримуємо всі продукти з середи
+//     const wednesdayData = row.Days.find((day: { Weekday: number }) => day.Weekday === 2);
+//     if (wednesdayData && wednesdayData.ProductIds?.length > 0) {
+//       const productsToDistribute = [...wednesdayData.ProductIds]; // Копіюємо список страв
+
+//       // Якщо немає інших днів, розподіляємо рівномірно між доступними
+//       if (updatedDays.length === 0) {
+//         updatedDays = [
+//           { Weekday: 0, ProductIds: [] },
+//           { Weekday: 1, ProductIds: [] },
+//           { Weekday: 3, ProductIds: [] },
+//           { Weekday: 4, ProductIds: [] },
+//           { Weekday: 5, ProductIds: [] },
+//           { Weekday: 6, ProductIds: [] }
+//         ];
+//       }
+
+//       // Розподіляємо продукти з середи по інших доступних днях
+//       productsToDistribute.forEach((product, index) => {
+//         const targetDay = updatedDays[index % updatedDays.length]; // Вибираємо день по круговому алгоритму
+//         targetDay.ProductIds.push(product);
+//       });
+//     }
+
+//     return { ...row, Days: updatedDays };
+//   });
+// }
+
+// private generateWeekDates(): void {
+//   const today = new Date();
+//   const currentDay = today.getDay();
+//   const monday = new Date(today);
+//   monday.setDate(today.getDate() - (currentDay === 0 ? 6 : currentDay - 1));
+
+//   const days = ['Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag', 'Sonntag'];
+//   this.daysOfWeek = days.map((day, index) => {
+//     const date = new Date(monday);
+//     date.setDate(monday.getDate() + index);
+//     return { name: day, date: date.toLocaleDateString('uk-DE') };
+//   });
+// }
+
+// private getISOWeek(date: Date): number {
+//   const tempDate = new Date(date.getTime());
+//   tempDate.setHours(0, 0, 0, 0);
+//   tempDate.setDate(tempDate.getDate() + 3 - ((tempDate.getDay() + 6) % 7));
+//   const firstThursday = tempDate.getTime();
+//   tempDate.setMonth(0, 1);
+//   if (tempDate.getDay() !== 4) {
+//     tempDate.setMonth(0, 1 + ((4 - tempDate.getDay() + 7) % 7));
+//   }
+//   return Math.ceil((firstThursday - tempDate.getTime()) / 604800000) + 1;
+// }
