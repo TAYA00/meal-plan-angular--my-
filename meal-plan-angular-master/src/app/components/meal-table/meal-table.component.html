@@ -18,19 +18,13 @@
         <tr *ngFor="let row of rows">
           <td class = "aktion"><strong class="action-text">{{ row?.Name }}</strong></td>
           <td *ngFor="let weekday of weekdays">
-            <span>{{weekday}}</span>
-            {{ getProducts(weekday, row) }}
-          </td>
-          <td *ngFor="let day of row?.Days">
-            <div *ngFor="let productObj of day?.ProductIds">
-              <div *ngIf="data?.Products?.[productObj?.ProductId] as product">
-                <strong>{{ product?.Name || 'Unbekanntes Produkt' }}</strong><br>
-                <small class="allergens"  *ngIf="product?.AllergenIds?.length">
-                  {{ getAllergenNames(product) }}
-                </small><br>
-                <strong>{{ product?.Price?.Betrag ? (product.Price.Betrag + ' €') : 'Preis nicht verfügbar' }}</strong>
-              </div>
-            </div>
+            <div *ngFor="let product of getProducts(weekday, row)">
+              <span>{{weekday}}</span>
+              <strong>{{ product?.Name || 'Unbekanntes Produkt' }}</strong><br>
+              <small class="allergens"  *ngIf="product?.AllergenIds?.length">
+                {{ getAllergenNames(product) }}
+              </small><br>
+              <strong>{{ product?.Price?.Betrag ? (product.Price.Betrag + ' €') : 'Preis nicht verfügbar' }}</strong>            </div>
           </td>
         </tr>
       </tbody>

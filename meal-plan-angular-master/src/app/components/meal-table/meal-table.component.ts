@@ -157,7 +157,10 @@ export class MealTableComponent implements OnInit {
   }
 
   getProducts(weekday: number, row: Row) {
-    return `${weekday} - ${row.Name}`
+    let productIds = row.Days.find((day) => day.Weekday == weekday)?.ProductIds.map((prod) =>  prod.ProductId)
+    let products = productIds?.map((id) =>  this.data.Products[id] )
+
+    return products;
   }
 
   getAllergenNames(product: Product): string {
